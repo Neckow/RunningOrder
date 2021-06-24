@@ -17,6 +17,7 @@ extension NewStoryView {
         @Published var name = ""
         @Published var ticketID = ""
         @Published var epic = ""
+        @Published var readyForDemo = false
 
         var dismissSubject = PassthroughSubject<Void, Never>()
 
@@ -40,6 +41,7 @@ extension NewStoryView {
                 name: name,
                 ticketReference: ticketID,
                 epic: epic,
+                readyForDemo: readyForDemo,
                 creatorReference: nil,
                 zoneId: sprint.zoneId
             )

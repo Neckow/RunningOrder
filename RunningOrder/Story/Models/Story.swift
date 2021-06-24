@@ -14,6 +14,7 @@ struct Story {
     let name: String
     let ticketReference: String
     let epic: String
+    var readyForDemo: Bool
 
     let creatorReference: User.Reference?
     let zoneId: CKRecordZone.ID

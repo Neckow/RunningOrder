@@ -15,6 +15,7 @@ extension Story: CKRecordable {
         self.name = try record.property("name")
         self.ticketReference = try record.property("ticketReference")
         self.epic = try record.property("epic")
+        self.readyForDemo = try record.property("readyForDemo")
 
         let sprintReference: CKRecord.Reference = try record.property("sprintId")
         self.sprintId = sprintReference.recordID.recordName
@@ -33,7 +34,8 @@ extension Story: CKRecordable {
         storyRecord["name"] = self.name
         storyRecord["ticketReference"] = self.ticketReference
         storyRecord["epic"] = self.epic
-        storyRecord["sprintId"] = CKRecord.Reference(recordID: sprintRecordId(zoneId: zoneId), action: .deleteSelf)
+        storyRecord["readyForDemo"] = self.readyForDemo
+         storyRecord["sprintId"] = CKRecord.Reference(recordID: sprintRecordId(zoneId: zoneId), action: .deleteSelf)
 
         storyRecord.parent = CKRecord.Reference(recordID: sprintRecordId(zoneId: zoneId), action: .none)
 

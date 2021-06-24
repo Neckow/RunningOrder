@@ -11,14 +11,17 @@ import SwiftUI
 extension StoryDetailHeader {
     struct InternalView: View {
         @Environment(\.epicColor) var epicColor
-        let story: Story
+        @State var story: Story
         @ObservedObject var logic: Logic
 
         var body: some View {
             HStack {
                 Tag(story.ticketReference, color: Color.gray)
                 Tag(story.epic, color: epicColor)
+                Toggle("Ready for Demo", isOn: $story.readyForDemo)
+                    .frame(width: 300)
                 Spacer()
+
                 if let userName = logic.userName {
                     Label(userName, systemImage: "person.circle.fill")
                         .font(Font.title2.bold())
